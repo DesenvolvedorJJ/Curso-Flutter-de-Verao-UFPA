@@ -1,15 +1,31 @@
+import 'dart:io';
+
 void main() {
-  const String nome = 'João Oliveira';
-  int idade = 18;
+  print("Digite seu nome:");
+  String? nome = stdin.readLineSync();
+  print("Digite sua idade:");
+  int idade = int.parse(stdin.readLineSync()!);
   int anoAtual = 2023;
-  int anoDeEntrada = 2022;
+  print("Digite seu ano de entrada:");
+  int anoDeEntrada = int.parse(stdin.readLineSync()!);
   String ehNovato = '';
-  double peso = 75.5;
-  Map<String, double> notas = {'Avl1': 7.6, 'Avl2': 8.4, 'Avl3': 9.0, 'Avl4': 10.0};
-  List<String> disciplinas = ['Algoritmos', 'Estrutura de dados', 'Informática Básica'];
-  String? endereco = null;
-  
-  print("Nome do aluno: $nome");
+  print("Digite seu peso:");
+  double peso = double.parse(stdin.readLineSync()!);
+  Map<String, double> notas = {
+    'Avl1': 7.6,
+    'Avl2': 8.4,
+    'Avl3': 9.0,
+    'Avl4': 10.0
+  };
+  List<String> disciplinas = [
+    'Algoritmos',
+    'Estrutura de dados',
+    'Informática Básica'
+  ];
+  print("Digite seu endereço:");
+  String? endereco = stdin.readLineSync();
+
+  print("\n\nNome do aluno: $nome");
   print("Idade: $idade");
   if (anoAtual == anoDeEntrada) {
     ehNovato = 'sim';

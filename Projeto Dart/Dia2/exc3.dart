@@ -1,10 +1,13 @@
+import 'dart:io';
+
 void main() {
-  int num = 35;
+  print('Digite um número inteiro: ');
+  int num = int.parse(stdin.readLineSync()!);
 
   if (num > 10 && num < 20) {
-    print("O número é maior que 10 e menor que 20? \nverdadeiro");
+    print("\nO número é maior que 10 e menor que 20? \nverdadeiro");
   } else {
-    print("O número é maior que 10 e menor que 20? \nfalso");
+    print("\nO número é maior que 10 e menor que 20? \nfalso");
   }
 
   if (num == 0 || num == 50) {
