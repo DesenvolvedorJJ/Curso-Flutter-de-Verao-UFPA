@@ -1,5 +1,6 @@
 void main() {
-  int num1 = 10;
+  print('Digite um número: ');
+  int? num1 = 10;
   int num2 = 3;
   int soma = num1 + num2;
   int subtracao = num1 - num2;
