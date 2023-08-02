@@ -70,7 +70,6 @@ void main() {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                   ),
-                  SizedBox(height: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: dados['Aperitivos']!.map((receita) {
