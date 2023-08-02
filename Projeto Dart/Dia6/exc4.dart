@@ -2,34 +2,33 @@ import 'package:flutter/material.dart';
 
 void main() {
   final Map<String, List<String>> dados = {
-    'Sobremesas': ['Torta de Maçã', 'Mousse de Chocolate', 'Pudim de Leite Condensado'],
-    'Pratos principais': ['Frango Assado com Batatas', 'Espaguete à Bolonhesa', 'Risoto de Cogumelos'],
-    'Aperitivos': ['Bolinhos de Queijo', 'Bruschetta de Tomate e Manjericão', 'Canapés de Salmão com Cream Cheese'],
+    'Sobremesas': [
+      'Torta de Maçã',
+      'Mousse de Chocolate',
+      'Pudim de Leite Condensado',
+    ],
+    'Pratos principais': [
+      'Frango Assado com Batatas',
+      'Espaguete à Bolonhesa',
+      'Risoto de Cogumelos',
+    ],
+    'Aperitivos': [
+      'Bolinhos de Queijo',
+      'Bruschetta de Tomate e Manjericão',
+      'Canapés de Salmão com Cream Cheese',
+    ],
   };
-
-  int? categoria = null; // Valor arbitrário;
+  
+  final int? categoria = null;
 
   runApp(MaterialApp(
-    home: ReceitasScreen(dados: dados, categoria: categoria),
-  ));
-}
-
-class ReceitasScreen extends StatelessWidget {
-  final Map<String, List<String>> dados;
-  final int? categoria;
-
-  ReceitasScreen({required this.dados, required this.categoria});
-
-  @override
-  Widget build(BuildContext context) {
-    if (categoria == null) {
+    if (categoria == null)
       // Todas as categorias
-      return Scaffold(
+      home: Scaffold(
         appBar: AppBar(
           title: Text('Minhas receitas'),
         ),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16),
           children: [
             Center(
             child: Text(
@@ -37,9 +36,8 @@ class ReceitasScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ),
-          SizedBox(height: 10),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: dados['Sobremesas']!.map((receita) {
               return Text(
                 receita,
@@ -47,16 +45,14 @@ class ReceitasScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 20),
           Center(
             child: Text(
               'Pratos principais',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ),
-          SizedBox(height: 10),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: dados['Pratos principais']!.map((receita) {
               return Text(
                 receita,
@@ -64,7 +60,6 @@ class ReceitasScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 20),
           Center(
             child: Text(
               'Aperitivos',
@@ -73,7 +68,7 @@ class ReceitasScreen extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: dados['Aperitivos']!.map((receita) {
               return Text(
                 receita,
@@ -81,7 +76,6 @@ class ReceitasScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 20),
           ],
         ),
       );
@@ -92,7 +86,6 @@ class ReceitasScreen extends StatelessWidget {
           title: Text('Sobremesas'),
         ),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16),
           children: [
             Center(
             child: Text(
@@ -100,9 +93,8 @@ class ReceitasScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ),
-          SizedBox(height: 10),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: dados['Sobremesas']!.map((receita) {
               return Text(
                 receita,
@@ -110,7 +102,6 @@ class ReceitasScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 20),
           ],
         ),
       );
@@ -121,7 +112,6 @@ class ReceitasScreen extends StatelessWidget {
           title: Text('Pratos principais'),
         ),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16),
           children: [
           Center(
             child: Text(
@@ -129,9 +119,8 @@ class ReceitasScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ),
-          SizedBox(height: 10),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: dados['Pratos principais']!.map((receita) {
               return Text(
                 receita,
@@ -139,7 +128,6 @@ class ReceitasScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 20),
           ],
         ),
       );
@@ -150,7 +138,6 @@ class ReceitasScreen extends StatelessWidget {
           title: Text('Aperitivos'),
         ),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16),
           children: [
           Center(
             child: Text(
@@ -158,9 +145,8 @@ class ReceitasScreen extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ),
-          SizedBox(height: 10),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: dados['Aperitivos']!.map((receita) {
               return Text(
                 receita,
@@ -168,7 +154,6 @@ class ReceitasScreen extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 20),
           ],
         ),
       );
@@ -183,5 +168,5 @@ class ReceitasScreen extends StatelessWidget {
         ),
       );
     }
-  }
+  ));
 }
