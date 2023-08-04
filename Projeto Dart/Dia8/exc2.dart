@@ -153,7 +153,7 @@ class RecipeCategory extends StatelessWidget {
         const SizedBox(
             height: 8), // Espaço entre o título e os ícones dos pratos
         SizedBox(
-          height: 120, // Defina a altura fixa dos containers dos pratos
+          height: 120, // Altura fixa dos containers dos pratos
           child: ListView.builder(
             scrollDirection: Axis.horizontal, // Exibir na horizontal
             itemCount: recipes.length,
@@ -224,7 +224,6 @@ class RecipeCategory extends StatelessWidget {
       ),
     );
 
-    // Handle the result here, if needed.
     if (result == true) {
       // ignore: use_build_context_synchronously
       _showConfirmationDialog(context, prato);
