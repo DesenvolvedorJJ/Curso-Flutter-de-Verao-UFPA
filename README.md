@@ -14,4 +14,4 @@ Os conteúdos referentes as primeiras semanas do curso estão localizados em:
 
 ## Curso Específico (Web):
 Os conteúdos referentes ao curso estão localizados em:
-`[Projeto Portifólio](https://github.com/DesenvolvedorJJ/Curso-Flutter-de-Verao-UFPA/tree/main/curso_especifico/lib)`
+[Projeto Portifólio](https://github.com/DesenvolvedorJJ/Curso-Flutter-de-Verao-UFPA/tree/main/curso_especifico/lib)
