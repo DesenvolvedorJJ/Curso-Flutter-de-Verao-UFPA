@@ -1,19 +1,26 @@
-import 'components/header.dart';
 import 'package:flutter/material.dart';
+import 'components/menu.dart';
 
 class Projects extends StatelessWidget {
   const Projects({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [
-          Header(title: "Projetos"),
-          Center(
-            child: Text("Projetos"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Projetos"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
           ),
         ],
+      ),
+      drawer: const MenuScreen(),
+      body: const Center(
+        child: Text("Projetos"),
       ),
     );
   }
