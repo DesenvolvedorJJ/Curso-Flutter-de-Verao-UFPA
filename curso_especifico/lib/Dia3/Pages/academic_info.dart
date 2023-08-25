@@ -18,7 +18,7 @@ class AcademicInformation extends StatelessWidget {
           ),
         ],
       ),
-      drawer: const MenuScreen(),
+      drawer: const Menu(),
       body: const Center(
         child: Text("Informações acadêmicas"),
       ),

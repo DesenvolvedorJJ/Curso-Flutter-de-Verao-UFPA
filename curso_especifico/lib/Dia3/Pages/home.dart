@@ -40,50 +40,79 @@ class Home extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         height: 5 * size.height / 6,
         width: size.width,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const SizedBox(height: 80),
             Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.white, width: 2),
-                    ),
-                    child: const Text(
-                      "Técnico em DS",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 32,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Expanded(
+                    flex: 2,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.white, width: 5),
+                          ),
+                          child: const Text(
+                            "Técnico em DS",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 120),
+                        const Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 50.0),
+                            child: Text(
+                              "Experiência com Engenharia e Análise de Dados, Infraestrutura de Hardwares e também, atuação em projetos de desenvolvento Web.",
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 22),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 80,
+                        ),
+                        const Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Text(
+                              "Sempre estou à procura de oportunidades para aprender.",
+                              textAlign: TextAlign.justify,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 100),
-                  const Text(
-                    "Vou ver um texto pra por ainda",
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  const Expanded(
+                    flex: 1,
+                    child: Align(
+                      alignment:
+                          Alignment.topCenter, // Adjust vertical alignment
+                      child: CircleAvatar(
+                        radius: 180,
+                        backgroundColor: Colors.white,
+                        backgroundImage: AssetImage("caminho_imagem.jpg"),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            const Expanded(
-              flex: 1,
-              child: CircleAvatar(
-                radius: 120,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage("caminho_imagem.jpg"),
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            )
           ],
         ),
       ),
@@ -91,11 +120,7 @@ class Home extends StatelessWidget {
   }
 
   void _openRightMenu(BuildContext context) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return const MenuScreen();
-      },
-    );
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Menu()));
   }
 }

@@ -27,11 +27,6 @@ class About extends StatelessWidget {
   }
 
   void _openRightMenu(BuildContext context) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return const MenuScreen();
-      },
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
   }
 }
