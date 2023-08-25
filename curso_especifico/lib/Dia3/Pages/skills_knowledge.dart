@@ -8,20 +8,30 @@ class SkillsKnowledge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Conhecimentos e Habilidades"),
+        title: const Text(""),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {
-              Scaffold.of(context).openDrawer();
+              _openRightMenu(context);
             },
           ),
         ],
       ),
-      drawer: const MenuScreen(),
       body: const Center(
         child: Text("Conhecimentos e Habilidades"),
       ),
+    );
+  }
+
+  void _openRightMenu(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return const MenuScreen();
+      },
     );
   }
 }

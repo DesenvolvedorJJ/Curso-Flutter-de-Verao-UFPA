@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../Pages/about.dart';
-import '../Pages/academic_info.dart';
 import '../Pages/home.dart';
 import '../Pages/projects.dart';
 import '../Pages/skills_knowledge.dart';
@@ -30,12 +29,6 @@ class MainApp extends StatelessWidget {
           path: '/conhecimentos',
           pageBuilder: (context, state) => const MaterialPage(
             child: SkillsKnowledge(),
-          ),
-        ),
-        GoRoute(
-          path: '/informacoes',
-          pageBuilder: (context, state) => const MaterialPage(
-            child: AcademicInformation(),
           ),
         ),
         GoRoute(
