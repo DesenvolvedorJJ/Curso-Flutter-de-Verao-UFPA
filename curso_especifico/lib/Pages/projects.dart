@@ -89,7 +89,7 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
         initialPage: 0,
         enableInfiniteScroll: true,
         autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 5),
+        autoPlayInterval: const Duration(seconds: 2),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         viewportFraction: 0.8,
