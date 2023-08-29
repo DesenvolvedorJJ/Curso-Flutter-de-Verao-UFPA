@@ -11,28 +11,28 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = GoRouter(
-      initialLocation: '/',
+      initialLocation: '/Home',
       routes: [
         GoRoute(
-          path: '/',
+          path: '/Home',
           pageBuilder: (context, state) => const MaterialPage(
             child: Home(),
           ),
         ),
         GoRoute(
-          path: '/projetos',
+          path: '/Projetos',
           pageBuilder: (context, state) => const MaterialPage(
             child: Projects(),
           ),
         ),
         GoRoute(
-          path: '/conhecimentos',
+          path: '/Conhecimentos',
           pageBuilder: (context, state) => const MaterialPage(
             child: SkillsKnowledge(),
           ),
         ),
         GoRoute(
-          path: '/sobre',
+          path: '/Sobre',
           pageBuilder: (context, state) => const MaterialPage(
             child: About(),
           ),

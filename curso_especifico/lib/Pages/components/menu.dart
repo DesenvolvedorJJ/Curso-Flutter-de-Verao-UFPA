@@ -1,81 +1,189 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../app/imgs_svg.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  _MenuState createState() => _MenuState();
+}
+
+class _MenuState extends State<Menu> {
+  final List<String> menuSections = [
+    'Home',
+    'Projetos',
+    'Conhecimentos',
+    'Sobre'
+  ];
+
+  int currentIndex = 0;
+
+  final CarouselController _carouselController = CarouselController();
+
+  final Uri _link1 = Uri.parse('https://www.linkedin.com/in/1joao-pedro/');
+  final Uri _link2 = Uri.parse('https://github.com/DesenvolvedorJJ');
+  final Uri _link3 = Uri.parse('https://www.instagram.com/juao.oliva/');
+
+  Future<void> _launchUrl(Uri url) async {
+    await launchUrl(url);
+  }
+
+  void goToSection(int index) {
     final router = GoRouter.of(context);
+    router.go('/${menuSections[index]}');
+  }
+
+  void changeSection(int increment) {
+    setState(() {
+      currentIndex = (currentIndex + increment) % menuSections.length;
+      if (currentIndex < 0) {
+        currentIndex += menuSections.length;
+      }
+    });
+
+    _carouselController.animateToPage(currentIndex);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    SvgImageWidget linkedInIcon =
+        const SvgImageWidget(svgAssetPath: 'assets/icon/linkedin.svg');
+    SvgImageWidget githubIcon =
+        const SvgImageWidget(svgAssetPath: 'assets/icon/github.svg');
+    SvgImageWidget instagramIcon =
+        const SvgImageWidget(svgAssetPath: 'assets/icon/instagram.svg');
 
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.75, // 75% da largura da tela
+      width: MediaQuery.of(context).size.width * 0.9,
       child: Drawer(
         child: Row(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 4 / 9,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 100,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        'Minhas Redes',
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
+            // Parte das redes sociais
+            Expanded(
+              flex: 9,
+              child: Container(
+                // Adicionando o Container para definir a cor de fundo
+                color: Colors.black54,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(height: 100),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          'Minhas Redes',
+                          style: TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white, // Adicionando a cor de texto
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        'Minhas Redes',
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                    const SizedBox(height: 150),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        _buildSocialButton(
+                          linkedInIcon,
+                          'LinkedIn',
+                          () {
+                            _launchUrl(_link1);
+                          },
+                          MainAxisAlignment.start,
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                  _buildSocialButton(
-                      Icons.person, 'LinkedIn', () {}, MainAxisAlignment.start),
-                  _buildSocialButton(
-                      Icons.code, 'GitHub', () {}, MainAxisAlignment.center),
-                  _buildSocialButton(
-                      Icons.camera, 'Instagram', () {}, MainAxisAlignment.end),
-                ],
+                    const SizedBox(height: 50),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        _buildSocialButton(
+                          githubIcon,
+                          'GitHub',
+                          () {
+                            _launchUrl(_link2);
+                          },
+                          MainAxisAlignment.center,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 50),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        _buildSocialButton(
+                          instagramIcon,
+                          'Instagram',
+                          () {
+                            _launchUrl(_link3);
+                          },
+                          MainAxisAlignment.end,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 60),
+                  ],
+                ),
               ),
             ),
-            VerticalDivider(
-              color: Colors.white,
-              width: MediaQuery.of(context).size.width * 2 / 9,
-              thickness: 5,
+            // Divisor vertical
+            Container(
+              color: Colors.black54, // Adicionando cor de fundo
+              child: VerticalDivider(
+                color: Colors.white, // Cor da linha do divisor
+                width: MediaQuery.of(context).size.width * 1 / 9,
+                thickness: 5,
+              ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 3 / 9,
-              child: Column(
-                children: [
-                  _buildSectionLink('Home', '/', router, context),
-                  _buildSectionLink('Projetos', '/projetos', router, context),
-                  _buildSectionLink(
-                    'Habilidades e Conhecimentos',
-                    '/conhecimentos',
-                    router,
-                    context,
-                  ),
-                  _buildSectionLink('Sobre', '/sobre', router, context),
-                ],
+            // Carrossel
+            Expanded(
+              flex: 6,
+              child: Container(
+                color: Colors.black54, // Adicionando cor de fundo
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_upward, size: 30),
+                      onPressed: () {
+                        changeSection(-1);
+                      },
+                    ),
+                    const SizedBox(height: 50), // Ajuste o espaço
+                    CarouselSlider(
+                      items: menuSections.map((section) {
+                        return _buildSectionLink(section);
+                      }).toList(),
+                      options: CarouselOptions(
+                        height: 100, // Ajuste a altura do carrossel
+                        enableInfiniteScroll: true,
+                        initialPage: currentIndex,
+                        scrollDirection: Axis.vertical,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
+                      ),
+                      carouselController: _carouselController,
+                    ),
+                    const SizedBox(height: 20), // Ajuste o espaço
+                    IconButton(
+                      icon: const Icon(Icons.arrow_downward, size: 30),
+                      onPressed: () {
+                        changeSection(1);
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -84,33 +192,70 @@ class Menu extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialButton(IconData icon, String title, VoidCallback onTap,
-      MainAxisAlignment mainAlinhamento) {
-    return Row(
-      mainAxisAlignment: mainAlinhamento,
-      children: [
-        TextButton(
+  Widget _buildSocialButton(
+    SvgImageWidget icon,
+    String title,
+    VoidCallback onTap,
+    MainAxisAlignment alignment,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(
+          color: Colors.white,
+          width: 4,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20), // Adicione espaçamento interno aqui
+        child: TextButton(
           onPressed: onTap,
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+          ),
           child: Row(
+            //mainAxisAlignment: alignment,
             children: [
-              Icon(icon),
+              Container(
+                child: icon,
+              ),
               const SizedBox(width: 8),
-              Text(title),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 28,
+                ),
+              ),
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 
-  Widget _buildSectionLink(
-      String title, String route, GoRouter router, BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      onTap: () {
-        router.go(route);
-        Navigator.pop(context); // Fecha o menu
-      },
+  Widget _buildSectionLink(String title) {
+    return Column(
+      children: [
+        ListTile(
+          title: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 45,
+              color: currentIndex == menuSections.indexOf(title)
+                  ? Colors.white
+                  : Colors.black,
+            ),
+          ),
+          onTap: () {
+            goToSection(menuSections.indexOf(title));
+            Navigator.pop(context);
+          },
+        ),
+        const SizedBox(height: 10),
+      ],
     );
   }
 }

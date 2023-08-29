@@ -104,7 +104,7 @@ class Home extends StatelessWidget {
                       alignment:
                           Alignment.topCenter, // Adjust vertical alignment
                       child: CircleAvatar(
-                        radius: 180,
+                        radius: 150,
                         backgroundColor: Colors.white,
                         backgroundImage: AssetImage("caminho_imagem.jpg"),
                       ),
