@@ -85,19 +85,22 @@ class _MenuState extends State<Menu> {
                       ),
                     ),
                     const SizedBox(height: 150),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        _buildSocialButton(
-                          linkedInIcon,
-                          'LinkedIn',
-                          () {
-                            _launchUrl(_link1);
-                          },
-                          MainAxisAlignment.start,
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 90.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          _buildSocialButton(
+                            linkedInIcon,
+                            'LinkedIn',
+                            () {
+                              _launchUrl(_link1);
+                            },
+                            MainAxisAlignment.start,
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 50),
                     Row(
@@ -208,7 +211,7 @@ class _MenuState extends State<Menu> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20), // Adicione espaçamento interno aqui
+        padding: const EdgeInsets.all(25), // Adicione espaçamento interno aqui
         child: TextButton(
           onPressed: onTap,
           style: TextButton.styleFrom(

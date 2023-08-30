@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
 
   void _animateBorder() async {
     while (true) {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 2));
       setState(() {
         _borderRadius = _borderRadius == 0.0 ? 20.0 : 0.0;
 
@@ -104,8 +104,8 @@ class _HomeState extends State<Home> {
           builder: (BuildContext context, double value, Widget? child) {
             return AnimatedContainer(
               duration: const Duration(seconds: 2),
-              width: 400.0,
-              height: 200.0,
+              width: 375.0,
+              height: 150.0,
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(value),
@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                   "Técnico em DS",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 50,
+                    fontSize: 44,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -162,7 +162,7 @@ class _HomeState extends State<Home> {
                       child: CircleAvatar(
                         radius: 150,
                         backgroundColor: Colors.white,
-                        backgroundImage: AssetImage("caminho_imagem.jpg"),
+                        //backgroundImage: AssetImage("caminho_imagem.jpg"),
                       ),
                     ),
                   ),
