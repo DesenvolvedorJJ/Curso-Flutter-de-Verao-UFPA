@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:animated_floating_widget/animated_floating_widget.dart';
+import 'package:animated_text_lerp/animated_text_lerp.dart';
 import '../../app/imgs_svg.dart';
 
 class Menu extends StatefulWidget {
@@ -190,7 +191,7 @@ class _MenuState extends State<Menu> {
                       child: IconButton(
                         icon: const Icon(Icons.expand_more, size: 50),
                         onPressed: () {
-                          changeSection(-1);
+                          changeSection(1);
                         },
                       ),
                     ),
@@ -216,8 +217,9 @@ class _MenuState extends State<Menu> {
         borderRadius: BorderRadius.circular(2),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(25), // Adicione espaçamento interno aqui
-        child: FloatingWidget(
+          padding:
+              const EdgeInsets.all(25), // Adicione espaçamento interno aqui
+          child: FloatingWidget(
             verticalSpace: 20,
             duration: const Duration(
               seconds: 1,
@@ -229,56 +231,58 @@ class _MenuState extends State<Menu> {
               decoration: BoxDecoration(
                   color: Colors.transparent,
                   borderRadius: BorderRadius.circular(5)),
-                child: TextButton(
-          onPressed: onTap,
-          style: TextButton.styleFrom(
-            padding: EdgeInsets.zero,
-          ),
-          child: Row(
-            children: [
-              Container(
-                child: icon,
-              ),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 34,
+              child: TextButton(
+                onPressed: onTap,
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      child: icon,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 34,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
-        ),   
             ),
-          )
-      ),
+          )),
     );
   }
 
   Widget _buildSectionLink(String title) {
-  return Column(
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(right: 50), // Adicionando espaçamento horizontal
-        child: ListTile(
-          title: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 28,
-              color: currentIndex == menuSections.indexOf(title)
-                  ? Colors.white
-                  : Colors.black,
-            ),
-          ),
+    return Column(
+      children: [
+        InkWell(
           onTap: () {
             goToSection(menuSections.indexOf(title));
             Navigator.pop(context);
           },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 50),
+            child: AnimatedStringText(
+              title,
+              curve: Curves.easeIn,
+              duration: const Duration(milliseconds: 500),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 36,
+                color: currentIndex == menuSections.indexOf(title)
+                    ? Colors.white
+                    : Colors.black38,
+              ),
+            ),
+          ),
         ),
-      ),
-    ],
-  );
-}
+        const SizedBox(height: 10),
+      ],
+    );
+  }
 }

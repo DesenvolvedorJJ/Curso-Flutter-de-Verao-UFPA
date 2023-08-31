@@ -182,7 +182,7 @@ import '../app/project_info.dart';
 import 'components/menu.dart';
 
 class Projects extends StatelessWidget {
-    const Projects({Key? key}) : super(key: key);
+  const Projects({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -220,9 +220,30 @@ class Projects extends StatelessWidget {
       ),
     );
   }
+
   void _openRightMenu(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Menu()));
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => const Menu(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+          //const duration = Duration(milliseconds: 500); // Duração da animação
+
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var offsetAnimation = animation.drive(tween);
+
+          return SlideTransition(
+            position: offsetAnimation,
+            child: child,
+          );
+        },
+        transitionDuration: const Duration(seconds: 2), // Duração da transição
+      ),
+    );
   }
 }
 
