@@ -34,6 +34,8 @@ class _HomeState extends State<Home> {
     }
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -78,16 +80,18 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
         color: Colors.black54,
         padding: const EdgeInsets.all(20),
-        height: 5 * size.height / 6,
-        width: size.width,
+        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 80),
-            Expanded(
+            Container(
+              height: size.height,
+              width: size.width,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -169,9 +173,40 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+            Container(
+              color: Colors.transparent,
+              width: size.width,
+              height: size.height * 0.35,
+              padding: const EdgeInsets.all(20),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Alinha à esquerda
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+              ">_DEVJJ",
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30.0, fontFamily: 'Agne',),
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),  
+            SizedBox(height: 30),
+            Text(
+              "E-mail: exemplo@email.com",
+              style: TextStyle(color: Colors.white),
+            ),
+            Text(
+              "Telefone: (12) 3456-7890",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+            ),
           ],
         ),
       ),
+    ),
     );
   }
 
@@ -180,3 +215,69 @@ class _HomeState extends State<Home> {
         context, MaterialPageRoute(builder: (context) => const Menu()));
   }
 }
+
+/*Descarte:
+-----------------------------------------------------------------------------------------------------------------
+bool _showFooter = false;
+  ScrollController _scrollController = ScrollController();
+-----------------------------------------------------------------------------------------------------------------
+@override
+void initState() {
+  super.initState();
+  _animateBorder();
+
+  _scrollController.addListener(() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 10) {
+      setState(() {
+        _showFooter = true;
+      });
+    } else {
+      setState(() {
+        _showFooter = false;
+      });
+    }
+  });
+}
+
+  void _animateBorder() async {
+    while (true) {
+      await Future.delayed(const Duration(seconds: 1));
+      setState(() {
+        _borderRadius = _borderRadius == 0.0 ? 20.0 : 0.0;
+
+        if (_borderColor == Colors.black) {
+          _borderColor = Colors.white;
+        } else if (_borderColor == Colors.white) {
+          _borderColor = Colors.white;
+        }
+      });
+    }
+  }
+-----------------------------------------------------------------------------------------------------------------
+bottomSheet: _showFooter
+    ? Container(
+        width: double.infinity,
+        color: Colors.black,
+        padding: const EdgeInsets.all(20),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Alinha à esquerda
+          children: [
+            Text(
+              "Entre em contato:",
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "E-mail: exemplo@email.com",
+              style: TextStyle(color: Colors.white),
+            ),
+            Text(
+              "Telefone: (12) 3456-7890",
+              style: TextStyle(color: Colors.white),
+            ),
+          ],
+        ),
+      )
+    : null,
+*/

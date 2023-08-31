@@ -155,7 +155,7 @@ class _MenuState extends State<Menu> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.arrow_upward, size: 30),
+                      icon: const Icon(Icons.expand_less, size: 50),
                       onPressed: () {
                         changeSection(-1);
                       },
@@ -180,7 +180,7 @@ class _MenuState extends State<Menu> {
                     ),
                     const SizedBox(height: 20), // Ajuste o espaço
                     IconButton(
-                      icon: const Icon(Icons.arrow_downward, size: 30),
+                      icon: const Icon(Icons.expand_more, size: 50),
                       onPressed: () {
                         changeSection(1);
                       },
