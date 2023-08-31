@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:animated_floating_widget/animated_floating_widget.dart';
 import '../../app/imgs_svg.dart';
 
 class Menu extends StatefulWidget {
@@ -213,20 +214,27 @@ class _MenuState extends State<Menu> {
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(2),
-        border: Border.all(
-          color: Colors.white,
-          width: 4,
-        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(25), // Adicione espaçamento interno aqui
-        child: TextButton(
+        child: FloatingWidget(
+            verticalSpace: 20,
+            duration: const Duration(
+              seconds: 1,
+            ),
+            reverseDuration: const Duration(seconds: 1),
+            child: Container(
+              width: 200,
+              height: 60,
+              decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(5)),
+                child: TextButton(
           onPressed: onTap,
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
           ),
           child: Row(
-            //mainAxisAlignment: alignment,
             children: [
               Container(
                 child: icon,
@@ -236,12 +244,14 @@ class _MenuState extends State<Menu> {
                 title,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 34,
                 ),
               ),
             ],
           ),
-        ),
+        ),   
+            ),
+          )
       ),
     );
   }
