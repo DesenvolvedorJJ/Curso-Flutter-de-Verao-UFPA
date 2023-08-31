@@ -154,13 +154,17 @@ class _MenuState extends State<Menu> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.expand_less, size: 50),
-                      onPressed: () {
-                        changeSection(-1);
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 70), // Adicione um espaçamento à esquerda
+                      child: IconButton(
+                        icon: const Icon(Icons.expand_less, size: 50),
+                        onPressed: () {
+                          changeSection(-1);
+                        },
+                      ),
                     ),
-                    const SizedBox(height: 50), // Ajuste o espaço
+                    const SizedBox(height: 150), // Ajuste o espaço
                     CarouselSlider(
                       items: menuSections.map((section) {
                         return _buildSectionLink(section);
@@ -178,12 +182,16 @@ class _MenuState extends State<Menu> {
                       ),
                       carouselController: _carouselController,
                     ),
-                    const SizedBox(height: 20), // Ajuste o espaço
-                    IconButton(
-                      icon: const Icon(Icons.expand_more, size: 50),
-                      onPressed: () {
-                        changeSection(1);
-                      },
+                    const SizedBox(height: 100), // Ajuste o espaço
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 70), // Adicione um espaçamento à esquerda
+                      child: IconButton(
+                        icon: const Icon(Icons.expand_more, size: 50),
+                        onPressed: () {
+                          changeSection(-1);
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -228,7 +236,7 @@ class _MenuState extends State<Menu> {
                 title,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 28,
+                  fontSize: 22,
                 ),
               ),
             ],
@@ -239,14 +247,16 @@ class _MenuState extends State<Menu> {
   }
 
   Widget _buildSectionLink(String title) {
-    return Column(
-      children: [
-        ListTile(
+  return Column(
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 50), // Adicionando espaçamento horizontal
+        child: ListTile(
           title: Text(
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 45,
+              fontSize: 28,
               color: currentIndex == menuSections.indexOf(title)
                   ? Colors.white
                   : Colors.black,
@@ -257,8 +267,8 @@ class _MenuState extends State<Menu> {
             Navigator.pop(context);
           },
         ),
-        const SizedBox(height: 10),
-      ],
-    );
-  }
+      ),
+    ],
+  );
+}
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'dart:async';
+import 'components/footer.dart';
 import 'components/menu.dart';
 
 class Home extends StatefulWidget {
@@ -21,7 +23,7 @@ class _HomeState extends State<Home> {
 
   void _animateBorder() async {
     while (true) {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
       setState(() {
         _borderRadius = _borderRadius == 0.0 ? 20.0 : 0.0;
 
@@ -47,8 +49,8 @@ class _HomeState extends State<Home> {
   width: 200.0, // Largura do widget
   child: DefaultTextStyle(
     style: const TextStyle(
-      fontSize: 30.0,
-      fontFamily: 'Agne',
+      fontSize: 32.0,
+      fontFamily: 'Roboto',
       fontWeight: FontWeight.bold, // Adicionando negrito
       color: Colors.white, // Definindo a cor branca
     ),
@@ -89,7 +91,7 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 80),
-            Container(
+            SizedBox(
               height: size.height,
               width: size.width,
               child: Row(
@@ -99,7 +101,9 @@ class _HomeState extends State<Home> {
                     flex: 2,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+
                       //Primeira decoração
+                      
                       children: [
                         Center(                         
         child: TweenAnimationBuilder<double>(
@@ -108,8 +112,8 @@ class _HomeState extends State<Home> {
           builder: (BuildContext context, double value, Widget? child) {
             return AnimatedContainer(
               duration: const Duration(seconds: 2),
-              width: 375.0,
-              height: 150.0,
+              width: 275.0,
+              height: 105.0,
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(value),
@@ -120,7 +124,7 @@ class _HomeState extends State<Home> {
                   "Técnico em DS",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 44,
+                    fontSize: 32,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -173,36 +177,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            Container(
-              color: Colors.transparent,
-              width: size.width,
-              height: size.height * 0.35,
-              padding: const EdgeInsets.all(20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Alinha à esquerda
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-              ">_DEVJJ",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30.0, fontFamily: 'Agne',),
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),  
-            SizedBox(height: 30),
-            Text(
-              "E-mail: exemplo@email.com",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "Telefone: (12) 3456-7890",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-            ),
+            const Footer(),
           ],
         ),
       ),
@@ -215,69 +190,3 @@ class _HomeState extends State<Home> {
         context, MaterialPageRoute(builder: (context) => const Menu()));
   }
 }
-
-/*Descarte:
------------------------------------------------------------------------------------------------------------------
-bool _showFooter = false;
-  ScrollController _scrollController = ScrollController();
------------------------------------------------------------------------------------------------------------------
-@override
-void initState() {
-  super.initState();
-  _animateBorder();
-
-  _scrollController.addListener(() {
-    if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent - 10) {
-      setState(() {
-        _showFooter = true;
-      });
-    } else {
-      setState(() {
-        _showFooter = false;
-      });
-    }
-  });
-}
-
-  void _animateBorder() async {
-    while (true) {
-      await Future.delayed(const Duration(seconds: 1));
-      setState(() {
-        _borderRadius = _borderRadius == 0.0 ? 20.0 : 0.0;
-
-        if (_borderColor == Colors.black) {
-          _borderColor = Colors.white;
-        } else if (_borderColor == Colors.white) {
-          _borderColor = Colors.white;
-        }
-      });
-    }
-  }
------------------------------------------------------------------------------------------------------------------
-bottomSheet: _showFooter
-    ? Container(
-        width: double.infinity,
-        color: Colors.black,
-        padding: const EdgeInsets.all(20),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Alinha à esquerda
-          children: [
-            Text(
-              "Entre em contato:",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Text(
-              "E-mail: exemplo@email.com",
-              style: TextStyle(color: Colors.white),
-            ),
-            Text(
-              "Telefone: (12) 3456-7890",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      )
-    : null,
-*/
