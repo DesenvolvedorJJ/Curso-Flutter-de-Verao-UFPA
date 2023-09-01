@@ -166,12 +166,30 @@ class _HomeState extends State<Home> {
                     const Expanded(
                       flex: 1,
                       child: Align(
-                        alignment:
-                            Alignment.topCenter, // Adjust vertical alignment
-                        child: CircleAvatar(
-                          radius: 150,
-                          backgroundColor: Colors.white,
-                          //backgroundImage: AssetImage("caminho_imagem.jpg"),
+                        alignment: Alignment.topCenter,
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 150,
+                              backgroundColor: Colors.white,
+                              child: CircleAvatar(
+                                radius: 145,
+                                backgroundImage:
+                                    AssetImage("assets/images/photo1.jpg"),
+                              ),
+                            ),
+                            SizedBox(
+                                height:
+                                    30), // Espaçamento entre o círculo e o nome
+                            Text(
+                              "João Oliveira", // Substitua pelo nome desejado
+                              style: TextStyle(
+                                fontSize: 36,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -186,10 +204,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-  /*void _openRightMenu(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Menu()));
-  }*/
   void _openRightMenu(BuildContext context) {
     Navigator.push(
       context,
@@ -199,7 +213,6 @@ class _HomeState extends State<Home> {
           const begin = Offset(1.0, 0.0);
           const end = Offset.zero;
           const curve = Curves.easeInOut;
-          //const duration = Duration(milliseconds: 500); // Duração da animação
 
           var tween =
               Tween(begin: begin, end: end).chain(CurveTween(curve: curve));

@@ -1,14 +1,45 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
-class Footer extends StatelessWidget {
+class Footer extends StatefulWidget {
   const Footer({Key? key}) : super(key: key);
+
+  @override
+  State<Footer> createState() => _FooterState();
+}
+
+class _FooterState extends State<Footer> {
+  double _borderRadius = 0.0;
+  Color _borderColor = Colors.black;
+
+  @override
+  void initState() {
+    super.initState();
+    _startAnimation();
+  }
+
+  void _startAnimation() async {
+    while (true) {
+      await Future.delayed(const Duration(seconds: 2));
+      setState(() {
+        _borderRadius = _borderRadius == 0.0 ? 20.0 : 0.0;
+        _borderColor =
+            _borderColor == Colors.black ? Colors.white : Colors.black;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
 
-    return Container(
-      color: Colors.transparent,
+    return AnimatedContainer(
+      duration: const Duration(seconds: 2), // Duração da animação
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(_borderRadius),
+        border: Border.all(color: _borderColor, width: 10),
+      ),
       width: size.width,
       height: size.height * 0.35,
       padding: const EdgeInsets.all(20),
@@ -16,15 +47,20 @@ class Footer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-              ">_DEVJJ",
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30.0, fontFamily: 'Roboto',),
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ), 
+                ">_DEVJJ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30.0,
+                  fontFamily: 'Roboto',
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ],
+          ),
           _buildCardColumn(
             "Localização ",
             "Pará, Brazil",
@@ -60,7 +96,7 @@ class Footer extends StatelessWidget {
   }) {
     return Card(
       elevation: 5,
-      color: const Color.fromARGB(50, 255, 255, 255),
+      color: Colors.transparent,
       child: SizedBox(
         width: width,
         height: height,
@@ -83,10 +119,10 @@ class Footer extends StatelessWidget {
                     ),
                   ),
                   Icon(
-                icon,
-                color: Colors.white,
-                size: 20,
-              ),
+                    icon,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                   const SizedBox(height: 25),
                   Text(
                     content,
