@@ -115,18 +115,21 @@ class _FooterState extends State<Footer> {
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+                      fontSize: 26.0,
                     ),
                   ),
                   Icon(
                     icon,
                     color: Colors.white,
-                    size: 20,
+                    size: 22,
                   ),
                   const SizedBox(height: 25),
                   Text(
                     content,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
                   ),
                 ],
               ),
