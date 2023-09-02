@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../../app/project_info.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProjectCarousel extends StatefulWidget {
   const ProjectCarousel({Key? key}) : super(key: key);
@@ -18,14 +19,15 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
       description:
           'Primeiro projeto web que eu desenvolvi.\nNo ano de 2023, eu elaborei este mini-projeto de uma "empresa fictícia" com tecnologias HTML+CSS para uma avaliação de curso.\n\nPara conferir com mais detalhes, clique no botão e você irá para o meu repositório do Github.',
       link: Uri.parse(
-          'https://github.com/DesenvolvedorJJ/primeira-avl-de-topicos.github.io'),
+          'https://desenvolvedorjj.github.io/primeira-avl-de-topicos.github.io/'),
     ),
     ProjectInfo(
       image: 'assets/images/Projeto2.jpg',
       title: 'Projeto 2',
       description:
           'Este projeto ainda está em fase de desenvolvimento.\nA proposta é de criar um site para web com CRUD.\nAté o momento, o projeto aborda tecnologias HTML, CSS, JS, JSP, Banco de dados relacional remoto.\n\nPrevisão para o projeto ficar completo: nov/2023',
-      link: Uri.parse('https://github.com/DesenvolvedorJJ/ALJAVA'),
+      link: Uri.parse(
+          'https://desenvolvedorjj.github.io/segunda-avl-de-topicos.github.io/'),
     ),
   ];
 
@@ -40,8 +42,8 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
         initialPage: 0,
         enableInfiniteScroll: true,
         autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 6),
-        autoPlayAnimationDuration: const Duration(seconds: 4),
+        autoPlayInterval: const Duration(seconds: 8),
+        autoPlayAnimationDuration: const Duration(seconds: 3),
         autoPlayCurve: Curves.fastOutSlowIn,
         viewportFraction: 0.8,
         enlargeCenterPage: true,
@@ -71,7 +73,7 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
                 image: AssetImage(projects[index].image), // Caminho da imagem
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.5), // Aumenta a transparência
+                  Colors.black.withOpacity(0.8), // Aumenta a transparência
                   BlendMode.darken,
                 ),
               ),
@@ -87,7 +89,7 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
                 children: [
                   Text(
                     projects[index].title,
-                    style: const TextStyle(
+                    style: GoogleFonts.carterOne(
                       color: Colors.white,
                       fontSize: 45,
                       fontWeight: FontWeight.bold,
@@ -97,7 +99,7 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
                       height: 100), // Espaçamento entre o título e a descrição
                   Text(
                     projects[index].description,
-                    style: const TextStyle(
+                    style: GoogleFonts.specialElite(
                       color: Colors.white,
                       fontSize: 32,
                     ),
@@ -120,11 +122,11 @@ class _ProjectCarouselState extends State<ProjectCarousel> {
                           side: const BorderSide(color: Colors.white, width: 2),
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(20),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
                         child: Text(
                           "Ver Projeto",
-                          style: TextStyle(
+                          style: GoogleFonts.carterOne(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,

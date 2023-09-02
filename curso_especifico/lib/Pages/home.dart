@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 import 'components/footer.dart';
 import 'components/menu.dart';
@@ -46,9 +47,8 @@ class _HomeState extends State<Home> {
           title: SizedBox(
             width: 200.0, // Largura do widget
             child: DefaultTextStyle(
-              style: const TextStyle(
-                fontSize: 32.0,
-                fontFamily: 'Roboto',
+              style: GoogleFonts.pressStart2p(
+                fontSize: 24.0,
                 fontWeight: FontWeight.bold, // Adicionando negrito
                 color: Colors.white, // Definindo a cor branca
               ),
@@ -112,7 +112,7 @@ class _HomeState extends State<Home> {
                                   Widget? child) {
                                 return AnimatedContainer(
                                   duration: const Duration(seconds: 2),
-                                  width: 275.0,
+                                  width: 475.0,
                                   height: 105.0,
                                   decoration: BoxDecoration(
                                     color: Colors.transparent,
@@ -120,12 +120,12 @@ class _HomeState extends State<Home> {
                                     border: Border.all(
                                         color: _borderColor, width: 5),
                                   ),
-                                  child: const Center(
+                                  child: Center(
                                     child: Text(
                                       "Técnico em DS",
-                                      style: TextStyle(
+                                      style: GoogleFonts.pressStart2p(
                                         color: Colors.white,
-                                        fontSize: 32,
+                                        fontSize: 28,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -135,41 +135,43 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           const SizedBox(height: 120),
-                          const Center(
+                          Center(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 50.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 50.0),
                               child: Text(
                                 "Experiência com Engenharia e Análise de Dados, Infraestrutura de Hardwares e também, atuação em projetos de desenvolvento Web.",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 22),
+                                style: GoogleFonts.rowdies(
+                                    color: Colors.white, fontSize: 28),
                               ),
                             ),
                           ),
                           const SizedBox(
                             height: 80,
                           ),
-                          const Center(
+                          Center(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
                                 "Sempre estou à procura de oportunidades para aprender.",
                                 textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                style: GoogleFonts.rowdies(
+                                    color: Colors.white, fontSize: 22),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       flex: 1,
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: Column(
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               radius: 150,
                               backgroundColor: Colors.white,
                               child: CircleAvatar(
@@ -178,12 +180,12 @@ class _HomeState extends State<Home> {
                                     AssetImage("assets/images/photo1.jpg"),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                                 height:
                                     30), // Espaçamento entre o círculo e o nome
                             Text(
                               "João Oliveira", // Substitua pelo nome desejado
-                              style: TextStyle(
+                              style: GoogleFonts.pressStart2p(
                                 fontSize: 36,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

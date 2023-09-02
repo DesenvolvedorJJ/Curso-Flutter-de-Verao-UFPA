@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'components/footer.dart';
 import 'components/menu.dart';
 import 'components/project_carousel.dart';
@@ -11,11 +12,11 @@ class Projects extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Projetos",
-          style: TextStyle(
+          style: GoogleFonts.pressStart2p(
             fontWeight: FontWeight.bold,
-            fontSize: 44,
+            fontSize: 38,
           ),
         ),
         toolbarHeight: size.height / 6,

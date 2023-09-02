@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
 
 class Footer extends StatefulWidget {
@@ -46,18 +47,21 @@ class _FooterState extends State<Footer> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Column(
             children: [
-              Text(
-                ">_DEVJJ",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0,
-                  fontFamily: 'Roboto',
-                ),
-                textAlign: TextAlign.left,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    ">_DEVJJ",
+                    style: GoogleFonts.pressStart2p(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 38.0,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ],
               ),
             ],
           ),
@@ -65,21 +69,21 @@ class _FooterState extends State<Footer> {
             "Localização ",
             "Pará, Brazil",
             icon: Icons.location_on,
-            width: 250,
+            width: 300,
             height: 150,
           ),
           _buildCardColumn(
             "E-mail ",
             "oliveirajoaopdr@gmail.com",
             icon: Icons.mail,
-            width: 250,
+            width: 300,
             height: 150,
           ),
           _buildCardColumn(
             "Celular/Whatsapp",
             "+55 (91)992298140",
             icon: Icons.contact_phone,
-            width: 250,
+            width: 300,
             height: 150,
           ),
         ],
@@ -112,7 +116,7 @@ class _FooterState extends State<Footer> {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: GoogleFonts.phudu(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 26.0,
@@ -126,7 +130,7 @@ class _FooterState extends State<Footer> {
                   const SizedBox(height: 25),
                   Text(
                     content,
-                    style: const TextStyle(
+                    style: GoogleFonts.comfortaa(
                       color: Colors.white,
                       fontSize: 18.0,
                     ),

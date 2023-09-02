@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+//import 'package:animated_text_kit/animated_text_kit.dart';
 import 'components/footer.dart';
 import 'components/menu.dart';
-//const Footer(),
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
@@ -11,15 +12,26 @@ class About extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        //title: const Text("Sua Apresentação"),
-        backgroundColor: Colors.transparent,
+        title: Text(
+          "Sobre mim",
+          style: GoogleFonts.pressStart2p(
+            fontWeight: FontWeight.bold,
+            fontSize: 38,
+          ),
+        ),
+        toolbarHeight: size.height / 6,
+        backgroundColor: Colors.black54,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              _openRightMenu(context);
-            },
+          Padding(
+            padding: const EdgeInsets.only(
+                right: 40), // Adiciona espaçamento à direita
+            child: IconButton(
+              icon: const Icon(Icons.menu, size: 65),
+              onPressed: () {
+                _openRightMenu(context);
+              },
+            ),
           ),
         ],
       ),
@@ -27,36 +39,77 @@ class About extends StatelessWidget {
         child: Container(
           color: Colors.black54,
           padding: const EdgeInsets.all(20),
-          child: SizedBox(
-            height: size.height,
-            width: size.width,
-            child: Column(
-              children: <Widget>[
-                Center(
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                    child: const Text(
-                      "Olá, eu sou [Seu Nome]!",
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 80),
+              SizedBox(
+                child: Column(
+                  children: <Widget>[
+                    Center(
+                      child: SizedBox(
+                        height: size.height * 0.8,
+                        width: size.width,
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 150, right: 150),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Olá, eu sou João Oliveira",
+                                style: GoogleFonts.bungee(
+                                  fontSize: 32.0,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 80,
+                              ),
+                              Text(
+                                "Olá! Sou um profissional de tecnologia da informação em busca de desafios que ampliem minha expertise em desenvolvimento, análise e gerenciamento de sistemas. Atualmente, estou finalizando meu curso técnico em Desenvolvimento de Sistemas, com um foco sólido em aprimorar minhas habilidades técnicas."
+                                "\n\nPossuo experiência em manutenção de dispositivos eletrônicos, programação em diversas linguagens, gerenciamento de sistemas e desenvolvimento de scripts. Também sou proficientemente versado em tecnologias como Git, Docker, AWS e metodologias ágeis como Scrum."
+                                "\n\nEstou determinado a continuar evoluindo na área de TI, buscando oportunidades para aplicar meu conhecimento e contribuir de maneira significativa para o cenário tecnológico.",
+                                style: GoogleFonts.overlock(
+                                  fontSize: 22.0,
+                                ),
+                                textAlign: TextAlign.justify,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    const SizedBox(
+                      child: Column(
+                        children: [
+                          SectionTitle("Experiências Profissionais"),
+                          ProfessionalInfoItem("Cargo:",
+                              "\nEstagiário/Bolsista em Engenharia de Dados\n\n"),
+                          ProfessionalInfoItem("Empresa:", "\nCompass UOL"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 120,
+                    ),
+                    const Column(
+                      children: [
+                        SectionTitle("Informações Acadêmicas"),
+                        AcademicInfoItem("Grau:",
+                            "\nTécnico em Desenvolvimento de Sistemas\n\n"),
+                        AcademicInfoItem("Instituição:", "\nIFPA campus Belém"),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 120,
+                    ),
+                    const Column(
+                      children: [
+                        Footer(),
+                      ],
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 120,
-                ),
-                const SectionTitle("Informações Profissionais"),
-                const ProfessionalInfoItem(
-                    "Cargo", "Desenvolvedor de Software"),
-                const ProfessionalInfoItem("Empresa", "Minha Empresa Inc."),
-                const SectionTitle("Informações Acadêmicas"),
-                const AcademicInfoItem(
-                    "Grau", "Bacharel em Ciência da Computação"),
-                const AcademicInfoItem("Universidade", "Universidade Exemplo"),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -76,8 +129,8 @@ class SectionTitle extends StatelessWidget {
       color: Colors.transparent,
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18.0,
+        style: GoogleFonts.contrailOne(
+          fontSize: 28.0,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -95,8 +148,19 @@ class ProfessionalInfoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(label),
-      subtitle: Text(value),
+      title: Text(
+        label,
+        style: GoogleFonts.galindo(
+          fontSize: 20.0,
+        ),
+      ),
+      subtitle: Text(
+        value,
+        style: GoogleFonts.brunoAce(
+          fontSize: 16.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }
@@ -110,8 +174,19 @@ class AcademicInfoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(label),
-      subtitle: Text(value),
+      title: Text(
+        label,
+        style: GoogleFonts.galindo(
+          fontSize: 20.0,
+        ),
+      ),
+      subtitle: Text(
+        value,
+        style: GoogleFonts.brunoAce(
+          fontSize: 16.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 }

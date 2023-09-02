@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:animated_floating_widget/animated_floating_widget.dart';
 import 'package:animated_text_lerp/animated_text_lerp.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../app/imgs_svg.dart';
 
 class Menu extends StatefulWidget {
@@ -73,12 +74,12 @@ class _MenuState extends State<Menu> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(height: 100),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Center(
                         child: Text(
                           'Minhas Redes',
-                          style: TextStyle(
+                          style: GoogleFonts.pressStart2p(
                             fontSize: 45,
                             fontWeight: FontWeight.bold,
                             color: Colors.white, // Adicionando a cor de texto
@@ -109,13 +110,16 @@ class _MenuState extends State<Menu> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        _buildSocialButton(
-                          githubIcon,
-                          'GitHub',
-                          () {
-                            _launchUrl(_link2);
-                          },
-                          MainAxisAlignment.center,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 100.0),
+                          child: _buildSocialButton(
+                            githubIcon,
+                            'GitHub',
+                            () {
+                              _launchUrl(_link2);
+                            },
+                            MainAxisAlignment.center,
+                          ),
                         ),
                       ],
                     ),
@@ -226,7 +230,7 @@ class _MenuState extends State<Menu> {
             ),
             reverseDuration: const Duration(seconds: 1),
             child: Container(
-              width: 200,
+              width: 350,
               height: 60,
               decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -244,9 +248,9 @@ class _MenuState extends State<Menu> {
                     const SizedBox(width: 8),
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: GoogleFonts.pressStart2p(
                         color: Colors.white,
-                        fontSize: 34,
+                        fontSize: 28,
                       ),
                     ),
                   ],
@@ -272,7 +276,7 @@ class _MenuState extends State<Menu> {
               curve: Curves.easeIn,
               duration: const Duration(milliseconds: 500),
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.pressStart2p(
                 fontSize: 36,
                 color: currentIndex == menuSections.indexOf(title)
                     ? Colors.white

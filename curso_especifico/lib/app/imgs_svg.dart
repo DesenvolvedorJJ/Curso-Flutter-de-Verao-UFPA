@@ -9,8 +9,8 @@ class SvgImageWidget extends StatelessWidget {
   const SvgImageWidget({
     Key? key,
     required this.svgAssetPath,
-    this.width = 35,
-    this.height = 35,
+    this.width = 50,
+    this.height = 50,
   }) : super(key: key);
 
   @override
